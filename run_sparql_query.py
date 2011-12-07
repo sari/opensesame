@@ -37,18 +37,16 @@ import sesameConnection
 import canned_sparql_queries
         
 if __name__ == '__main__':
-    
-    query_key_help='Load sparql query predefined query keys:\n%s\n' % canned_sparql_queries.sample_sparql_query.keys()    
 
     import argparse
     '''Load command line arguments'''
     # Query make be defined as key to predefined queries, or file containing query.
-    parser = argparse.ArgumentParser(epilog="Example: python run_sparql_query.py -l -o -p -v DEBUG")
+    parser = argparse.ArgumentParser(epilog="Example: python run_sparql_query.py -l")
     parser.add_argument('-f', '--query_file', nargs=1, help='Load sparql query from file', dest='query_file')  
     parser.add_argument('-l', '--list_repos', help='Get a list of available repositories', action='store_true') 
     #parser.add_argument('-o', '--output', help='Output will be saved to a file', default=None, action='store_true')
     #parser.add_argument('-p', '--ppdict', help='Pretty print the resulting dictionary', default=False, action='store_true')
-    parser.add_argument('-q', '--query_key', nargs=1, help=query_key_help, dest='query_key', choices=canned_sparql_queries.sample_sparql_query.keys())
+    parser.add_argument('-q', '--query_key', nargs=1, help='Load sparql query predefined query keys', dest='query_key', choices=canned_sparql_queries.sample_sparql_query.keys())
     parser.add_argument('-r', '--repository', nargs=1, help='Sesame Repository', default=['emp_dept'])  
     parser.add_argument('-u', '--url', nargs=1, help='Sesame URL', dest='sesame_url', default=['http://localhost:8180/openrdf-sesame/'], required=False)    
     parser.add_argument('-v', '--loglevel', required=False, choices=['ERR', 'WARN', 'INFO', 'DEBUG'], default='DEBUG', help='Log level for additional output.')
