@@ -136,8 +136,6 @@ class OpenSesame():
         logger.debug("query endpoint=[%s]" % endpoint)        
         
         if sparql_query:
-            # remove any newlines from sparql_query string
-            sparql_query = sparql_query.translate(None,'\n')
             # add query to params              
             params = { 'query': sparql_query }            
             endpoint += "/%s" % (self.repository)
